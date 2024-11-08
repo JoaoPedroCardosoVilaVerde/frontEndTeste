@@ -1,0 +1,166 @@
+/*import React, { useState } from 'react';
+import './TicketPix.css'; // Importe seu arquivo CSS
+
+function TicketPix() {
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
+  const [paymentData, setPaymentData] = useState({
+    // Defina as informações do pedido 
+    // que serão enviadas para a API posteriormente
+    items: [
+      {
+        id: 'dummy-item', 
+        title: 'Dummy Title',
+        description: 'Descrição do Item',
+        quantity: 1,
+        unit_price: 5000 
+      } 
+    ],
+    // Outros dados do pedido ...
+  });
+  
+  // Crie o estado para armazenar os dados do cartão (token)
+  const [cardToken, setCardToken] = useState(null);
+  
+  const paymentMethods = [
+    {
+      id: 'nubank',
+      name: 'Nubank',
+      icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Nubank_Logo.svg/2048px-Nubank_Logo.svg.png', 
+      description: '**** 4292 Mastercard Crédito',
+    },
+    {
+      id: 'credit-card',
+      name: 'Cartão de Crédito',
+      icon: 'https://img.icons8.com/fluency/512/credit-card.png', 
+      description: 'Até 2x sem acréscimo',
+    },
+    // ... outros métodos de pagamento
+  ];
+
+  const handlePaymentMethodSelect = (method) => {
+    setSelectedPaymentMethod(method);
+  };
+
+  // Crie uma função para processar o cartão do usuário
+  const handleCardToken = async (cardData) => {
+    try {
+      const response = await fetch('https://api.mercadopago.com/v1/payment_methods/card_token', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer YOUR_ACCESS_TOKEN`, // Use o token de acesso do Mercado Pago
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+          card: cardData,
+          security_code: 'YOUR_SECURITY_CODE' // Troque por seu código de segurança 
+        }) 
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao obter token do cartão.');
+      }
+
+      const data = await response.json();
+      setCardToken(data.id); // Armazena o token do cartão
+    } catch (error) {
+      console.error("Erro:", error);
+      // Exibe um erro para o usuário
+    }
+  };
+ 
+  // Função de requisição à API de Pagamento 
+  const handlePayment = async () => {
+    if (!selectedPaymentMethod || !cardToken) {
+      // Validar se os métodos de pagamento e o token do cartão estão presentes.
+      return;
+    }
+
+    try {
+      const paymentData = {
+        // dados do pedido (produto, valor total, etc.)
+        items: [ 
+          {
+            id: 'dummy-item', 
+            title: 'Dummy Title',
+            description: 'Descrição do Item',
+            quantity: 1,
+            unit_price: 5000
+          }
+        ], 
+        // ... outros dados do pedido ... 
+        payment_method_id: selectedPaymentMethod.id, 
+        token: cardToken 
+      }; 
+ 
+      const response = await fetch('https://api.mercadopago.com/checkout/preferences', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer YOUR_ACCESS_TOKEN`, 
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(paymentData),
+      });
+ 
+      if (!response.ok) {
+        throw new Error('Erro ao criar a preferência de pagamento.');
+      }
+ 
+      const data = await response.json();
+ 
+      window.location.href = data.init_point; // Redireciona para o flow do Mercado Pago
+    } catch (error) {
+      console.error("Erro:", error);
+    }
+  };
+
+  return (
+    <div className="mercado-pago-checkout">
+      {/* Código existente */} 
+      <div className="payment-details">
+        <h2>Você pagará</h2>
+        <div className="selected-method">
+          {/* Exiba os detalhes do método de pagamento selecionado */}
+          {selectedPaymentMethod && (
+            <>
+              <img src={selectedPaymentMethod.icon} alt={selectedPaymentMethod.name} />
+              <div className="method-details">
+                <span className="method-name">{selectedPaymentMethod.name}</span>
+                <span className="method-description">{selectedPaymentMethod.description}</span>
+                {/* Botão "Alterar" */}
+                <button className="change-button">Alterar</button>
+              </div>
+           </>
+          )}
+          {/* Placeholder para "1x R$ 5.000"  */}
+          <span className="price">1x R$ 5.000</span> {/* Renderize aqui a informação de preço */} 
+        </div>
+        {/* Formulário de código de segurança: */}
+        {selectedPaymentMethod && ( 
+            <div className="security-code-form"> 
+                <label htmlFor="securityCode">Código de Segurança:</label>
+                <input 
+                    type="password" 
+                    id="securityCode"
+                    placeholder="CVV" 
+                    onInput={e => {
+                        setPaymentData(prevState => ({
+                            ...prevState, 
+                            security_code: e.target.value 
+                        }));
+                    }}
+                /> 
+            </div> 
+        )} 
+        <button className="pay-button" disabled={!selectedPaymentMethod || !cardToken} onClick={handlePayment}>Pagar</button> {/*  Chame handlePayment ao clicar */}
+        <div className="payment-secure-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-lock-fill" viewBox="0 0 16 16">
+            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+          </svg>
+          <span>Pagamento seguro</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default TicketPix;
