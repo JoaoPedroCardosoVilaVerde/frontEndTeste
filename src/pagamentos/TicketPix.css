@@ -1,244 +1,277 @@
+/* Estilos para o container principal do componente de pagamento */
 .container {
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 400px;
-    margin: 50px auto;
-    background-color: #f2f2f2;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 0;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .logo img {
-    height: 30px;
-  }
-  
-  .user {
-    font-size: 14px;
-  }
-  
-  .payment-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .amount {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .review {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-  }
-  
-  .review h3 {
-    margin-bottom: 5px;
-    font-size: 18px;
-  }
-  
-  .review p {
-    font-size: 14px;
-  }
-  
-  .payment-method {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
-  }
-  
-  .method {
-    display: flex;
-    align-items: center;
-  }
-  
-  .method img {
-    width: 40px;
-    margin-right: 10px;
-  }
-  
-  .payment-selector {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-  }
-  
-  .payment-selector select {
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-right: 5px;
-    font-size: 14px;
-    background-color: #f5f5f5;
-    appearance: none; /* Ocultar seta padrão */
-    -webkit-appearance: none; /* Ocultar seta para Safari e Chrome */
-  }
-  
-  .installments-selector {
-    display: flex;
-    align-items: center;
-  }
-  
-  .installments-selector select {
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    background-color: #f5f5f5;
-    appearance: none; /* Ocultar seta padrão */
-    -webkit-appearance: none; /* Ocultar seta para Safari e Chrome */
-  }
-  
-  .method p {
-    margin-bottom: 0;
-    font-size: 14px;
-  }
-  
-  .alter-button {
-    background-color: #00a650;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex; /* Para alinhar o ícone e o texto */
-    align-items: center;
-  }
-  
-  .alter-icon {
-    font-size: 1.2em;
-    margin-right: 5px; /* Espaço entre o ícone e o texto */
-  }
-  
-  .amount-to-pay {
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
-  }
-  
-  .amount-to-pay p {
-    margin-bottom: 0;
-  }
-  
-  .security-code {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
-  }
-  
-  .security-code img {
-    width: 30px;
-    margin-right: 10px;
-  }
-  
-  .security-code input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: #f5f5f5;
-    appearance: none; /* Ocultar seta padrão */
-    -webkit-appearance: none; /* Ocultar seta para Safari e Chrome */
-  }
-  
-  .pay-button {
-    background-color: #00a650;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    margin-bottom: 10px;
-    transition: background-color 0.3s; /* Adiciona transição para efeito suave */
-  }
-  
-  .pay-button:hover { /* Efeito de hover suave */
-    background-color: #00924a;
-  }
-  
-  .pay-button:disabled {
-    opacity: 0.5;
-    cursor: default;
-  }
-  
-  .success-message, .error-message {
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    font-size: 14px;
-  }
-  
-  .success-message {
-    background-color: #d7f4d7;
-    color: #008000;
-  }
-  
-  .error-message {
-    background-color: #f4d7d7;
-    color: #800000;
-  }
-  
-  .security {
-    display: flex;
-    align-items: center;
-  }
-  
-  .security img {
-    width: 30px;
-    margin-right: 5px;
-  }
-  
-  .security p {
-    margin-bottom: 0;
-    font-size: 12px;
-  }
-  
+  font-family: sans-serif; /* Define a fonte como sans-serif */
+  display: flex; /* Utiliza flexbox para organizar os elementos */
+  flex-direction: column; /* Organiza os elementos em coluna */
+  align-items: center; /* Alinha os itens no centro */
+  width: 400px; /* Define a largura do container como 400px */
+  margin: 50px auto; /* Define margens para centralizar horizontalmente */
+  background-color: #f2f2f2; /* Define a cor de fundo */
+  border-radius: 8px; /* Define o raio dos cantos */
+  padding: 20px; /* Define o padding */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Define a sombra */
+}
+
+/* Estilos para o cabeçalho do componente */
+.header {
+  display: flex; /* Utiliza flexbox para organizar os elementos */
+  justify-content: space-between; /* Distribui os elementos com espaço entre eles */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+  width: 100%; /* Define a largura do cabeçalho como 100% do container */
+  padding: 10px 0; /* Define o padding */
+  margin-bottom: 20px; /* Define a margem inferior */
+  border-bottom: 1px solid #ddd; /* Define a borda inferior */
+}
+
+/* Estilos para a imagem do logo */
+.logo img {
+  height: 30px; /* Define a altura da imagem */
+}
+
+/* Estilos para o nome do usuário */
+.user {
+  font-size: 14px; /* Define o tamanho da fonte */
+}
+
+/* Estilos para a seção de informações de pagamento */
+.payment-info {
+  display: flex; /* Utiliza flexbox para organizar os elementos */
+  justify-content: space-between; /* Distribui os elementos com espaço entre eles */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+  margin-bottom: 10px; /* Define a margem inferior */
+}
+
+/* Estilos para o valor do plano */
+.amount {
+  font-size: 24px; /* Define o tamanho da fonte */
+  font-weight: bold; /* Define o peso da fonte como negrito */
+}
+
+/* Estilos para a seção de revisão da assinatura */
+.review {
+  background-color: #fff; /* Define a cor de fundo */
+  padding: 15px; /* Define o padding */
+  border-radius: 4px; /* Define o raio dos cantos */
+  margin-bottom: 10px; /* Define a margem inferior */
+}
+
+/* Estilos para o título da seção de revisão */
+.review h3 {
+  margin-bottom: 5px; /* Define a margem inferior */
+  font-size: 18px; /* Define o tamanho da fonte */
+}
+
+/* Estilos para o parágrafo da seção de revisão */
+.review p {
+  font-size: 14px; /* Define o tamanho da fonte */
+}
+
+/* Estilos para a seção de seleção de método de pagamento */
+.payment-method {
+  display: flex; /* Utiliza flexbox para organizar os elementos */
+  justify-content: space-between; /* Distribui os elementos com espaço entre eles */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+  padding: 10px 0; /* Define o padding */
+  border-bottom: 1px solid #ddd; /* Define a borda inferior */
+  margin-bottom: 10px; /* Define a margem inferior */
+}
+
+/* Estilos para a seção do método de pagamento atual */
+.method {
+  display: flex; /* Utiliza flexbox para organizar os elementos */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+}
+
+/* Estilos para a imagem do método de pagamento */
+.method img {
+  width: 40px; /* Define a largura da imagem */
+  margin-right: 10px; /* Define a margem direita */
+}
+
+/* Estilos para o seletor de método de pagamento */
+.payment-selector {
+  display: flex; /* Utiliza flexbox para organizar os elementos */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+  margin-right: 10px; /* Define a margem direita */
+}
+
+/* Estilos para o elemento select do seletor de método de pagamento */
+.payment-selector select {
+  padding: 5px 10px; /* Define o padding */
+  border: 1px solid #ddd; /* Define a borda */
+  border-radius: 4px; /* Define o raio dos cantos */
+  margin-right: 5px; /* Define a margem direita */
+  font-size: 14px; /* Define o tamanho da fonte */
+  background-color: #f5f5f5; /* Define a cor de fundo */
+  appearance: none; /* Oculta a seta padrão do seletor */
+  -webkit-appearance: none; /* Oculta a seta para Safari e Chrome */
+}
+
+/* Estilos para a seção de seleção de parcelamento */
+.installments-selector {
+  display: flex; /* Utiliza flexbox para organizar os elementos */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+}
+
+/* Estilos para o elemento select do seletor de parcelamento */
+.installments-selector select {
+  padding: 5px 10px; /* Define o padding */
+  border: 1px solid #ddd; /* Define a borda */
+  border-radius: 4px; /* Define o raio dos cantos */
+  font-size: 14px; /* Define o tamanho da fonte */
+  background-color: #f5f5f5; /* Define a cor de fundo */
+  appearance: none; /* Oculta a seta padrão do seletor */
+  -webkit-appearance: none; /* Oculta a seta para Safari e Chrome */
+}
+
+/* Estilos para o parágrafo da seção do método de pagamento */
+.method p {
+  margin-bottom: 0; /* Remove a margem inferior */
+  font-size: 14px; /* Define o tamanho da fonte */
+}
+
+/* Estilos para o botão "Alterar" */
+.alter-button {
+  background-color: #00a650; /* Define a cor de fundo */
+  color: white; /* Define a cor do texto */
+  padding: 8px 15px; /* Define o padding */
+  border: none; /* Remove a borda */
+  border-radius: 4px; /* Define o raio dos cantos */
+  cursor: pointer; /* Define o cursor como ponteiro */
+  display: flex; /* Utiliza flexbox para organizar os elementos */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+}
+
+/* Estilos para o ícone do botão "Alterar" */
+.alter-icon {
+  font-size: 1.2em; /* Define o tamanho da fonte */
+  margin-right: 5px; /* Define a margem direita */
+}
+
+/* Estilos para a seção do valor total a pagar */
+.amount-to-pay {
+  padding: 10px 0; /* Define o padding */
+  border-bottom: 1px solid #ddd; /* Define a borda inferior */
+  margin-bottom: 10px; /* Define a margem inferior */
+}
+
+/* Estilos para o parágrafo da seção do valor total a pagar */
+.amount-to-pay p {
+  margin-bottom: 0; /* Remove a margem inferior */
+}
+
+/* Estilos para a seção do código de segurança */
+.security-code {
+  display: flex; /* Utiliza flexbox para organizar os elementos */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+  padding: 10px 0; /* Define o padding */
+  border-bottom: 1px solid #ddd; /* Define a borda inferior */
+  margin-bottom: 10px; /* Define a margem inferior */
+}
+
+/* Estilos para a imagem do código de segurança */
+.security-code img {
+  width: 30px; /* Define a largura da imagem */
+  margin-right: 10px; /* Define a margem direita */
+}
+
+/* Estilos para o campo de entrada do código de segurança */
+.security-code input {
+  width: 100%; /* Define a largura do campo como 100% */
+  padding: 10px; /* Define o padding */
+  border: 1px solid #ddd; /* Define a borda */
+  border-radius: 4px; /* Define o raio dos cantos */
+  font-size: 16px; /* Define o tamanho da fonte */
+  background-color: #f5f5f5; /* Define a cor de fundo */
+  appearance: none; /* Oculta a seta padrão do seletor */
+  -webkit-appearance: none; /* Oculta a seta para Safari e Chrome */
+}
+
+/* Estilos para o botão "Pagar" */
+.pay-button {
+  background-color: #00a650; /* Define a cor de fundo */
+  color: white; /* Define a cor do texto */
+  padding: 15px 30px; /* Define o padding */
+  border: none; /* Remove a borda */
+  border-radius: 4px; /* Define o raio dos cantos */
+  cursor: pointer; /* Define o cursor como ponteiro */
+  font-size: 16px; /* Define o tamanho da fonte */
+  width: 100%; /* Define a largura do botão como 100% */
+  margin-bottom: 10px; /* Define a margem inferior */
+  transition: background-color 0.3s; /* Adiciona transição para efeito suave */
+}
+
+/* Estilos para o botão "Pagar" ao passar o mouse */
+.pay-button:hover { /* Efeito de hover suave */
+  background-color: #00924a; /* Altera a cor de fundo */
+}
+
+/* Estilos para o botão "Pagar" desabilitado */
+.pay-button:disabled {
+  opacity: 0.5; /* Diminui a opacidade */
+  cursor: default; /* Define o cursor como padrão */
+}
+
+/* Estilos para mensagens de sucesso e erro */
+.success-message, .error-message {
+  padding: 10px; /* Define o padding */
+  border-radius: 4px; /* Define o raio dos cantos */
+  margin-bottom: 10px; /* Define a margem inferior */
+  font-size: 14px; /* Define o tamanho da fonte */
+}
+
+/* Estilos para mensagens de sucesso */
+.success-message {
+  background-color: #d7f4d7; /* Define a cor de fundo */
+  color: #008000; /* Define a cor do texto */
+}
+
+/* Estilos para mensagens de erro */
+.error-message {
+  background-color: #f4d7d7; /* Define a cor de fundo */
+  color: #800000; /* Define a cor do texto */
+}
+
+/* Estilos para a seção do ícone de segurança */
+.security {
+  display: flex; /* Utiliza flexbox para organizar os elementos */
+  align-items: center; /* Alinha os itens verticalmente no centro */
+}
+
+/* Estilos para a imagem do ícone de segurança */
+.security img {
+  width: 30px; /* Define a largura da imagem */
+  margin-right: 5px; /* Define a margem direita */
+}
+
+/* Estilos para o parágrafo da seção de segurança */
+.security p {
+  margin-bottom: 0; /* Remove a margem inferior */
+  font-size: 12px; /* Define o tamanho da fonte */
+}
+
+/* Estilos para o botão "Confirmar" */
 .confirm-button {
-    background-color: #00a650;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  background-color: #00a650; /* Define a cor de fundo */
+  color: white; /* Define a cor do texto */
+  padding: 8px 15px; /* Define o padding */
+  border: none; /* Remove a borda */
+  border-radius: 4px; /* Define o raio dos cantos */
+  cursor: pointer; /* Define o cursor como ponteiro */
+}
+
+/* Estilos para telas menores */
+@media screen and (max-width: 400px) {
+  .container {
+    width: 95%; /* Define a largura do container como 95% da tela */
   }
 
-  
- 
-  @media screen and (max-width: 400px) {
-    .container {
-      width: 95%;
-    }
-  
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .user {
-      margin-bottom: 10px;
-    }
+  .header {
+    flex-direction: column; /* Organiza os elementos do cabeçalho em coluna */
+    align-items: flex-start; /* Alinha os itens do cabeçalho à esquerda */
   }
+
+  .user {
+    margin-bottom: 10px; /* Define a margem inferior do nome do usuário */
+  }
+}
